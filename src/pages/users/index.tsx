@@ -12,6 +12,7 @@ import {
   Thead,
   Tr,
   Text,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { RiAddLine, RiEditLine } from "react-icons/ri";
 import { Header } from "../components/Header";
@@ -19,6 +20,11 @@ import { Pagination } from "../components/Pagination";
 import { Sidebar } from "../components/Sidebar";
 
 export default function UserList() {
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    lg: true
+  })
+
   return (
     <Box>
       <Header />
@@ -52,7 +58,7 @@ export default function UserList() {
 
                 <Th>Usuário</Th>
 
-                <Th>Data de Cadastro</Th>
+                {isWideVersion && <Th>Data de Cadastro</Th>}
 
                 <Th w="8">Ação</Th>
               </Tr>
@@ -60,11 +66,11 @@ export default function UserList() {
 
             <Tbody>
               <Tr>
-                <Td px="6">
+                <Td px={["4","4","6"]}>
                   <Checkbox colorScheme="pink" />
                 </Td>
 
-                <Td px="6">
+                <Td px={["4","4","6"]}>
                   <Box>
                     <Text fontWeight="bold">Douglas Sena</Text>
                     <Text fontSize="sm" color="gray.300">
@@ -73,9 +79,9 @@ export default function UserList() {
                   </Box>
                 </Td>
 
-                <Td>22 de março de 2022</Td>
+                {isWideVersion && <Td>22 de março de 2022</Td>}
 
-                <Td>
+                {/* <Td>
                   <Button
                     as="a"
                     size="sm"
@@ -84,9 +90,9 @@ export default function UserList() {
                     leftIcon={<Icon as={RiEditLine} fontSize="16" />}
                     cursor="pointer"
                   >
-                    Editar
+                    {isWideVersion && "Editar" }
                   </Button>
-                </Td>
+                </Td> */}
               </Tr>
             </Tbody>
           </Table>
