@@ -14,6 +14,7 @@ import {
   Text,
   useBreakpointValue,
 } from "@chakra-ui/react";
+import Link from "next/link";
 import { RiAddLine, RiEditLine } from "react-icons/ri";
 import { Header } from "../components/Header";
 import { Pagination } from "../components/Pagination";
@@ -22,8 +23,8 @@ import { Sidebar } from "../components/Sidebar";
 export default function UserList() {
   const isWideVersion = useBreakpointValue({
     base: false,
-    lg: true
-  })
+    lg: true,
+  });
 
   return (
     <Box>
@@ -37,16 +38,19 @@ export default function UserList() {
             <Heading size="lg" fontWeight="normal">
               Usuários
             </Heading>
-            <Button
-              as="a"
-              size="sm"
-              fontSize="sm"
-              colorScheme="pink"
-              leftIcon={<Icon as={RiAddLine} fontSize="20" />}
-              cursor="pointer"
-            >
-              Criar Novo
-            </Button>
+
+            <Link href="users/create" passHref>
+              <Button
+                as="a"
+                size="sm"
+                fontSize="sm"
+                colorScheme="pink"
+                leftIcon={<Icon as={RiAddLine} fontSize="20" />}
+                cursor="pointer"
+              >
+                Criar Novo
+              </Button>
+            </Link>
           </Flex>
 
           <Table colorScheme="whiteAlpha">
@@ -66,11 +70,11 @@ export default function UserList() {
 
             <Tbody>
               <Tr>
-                <Td px={["4","4","6"]}>
+                <Td px={["4", "4", "6"]}>
                   <Checkbox colorScheme="pink" />
                 </Td>
 
-                <Td px={["4","4","6"]}>
+                <Td px={["4", "4", "6"]}>
                   <Box>
                     <Text fontWeight="bold">Douglas Sena</Text>
                     <Text fontSize="sm" color="gray.300">
